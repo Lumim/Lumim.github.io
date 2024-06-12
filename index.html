@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-600 text-white p-4 text-center">
+        <h1 class="text-3xl font-bold">Mohammad Lummim Sarker</h1>
+        <h2>Portfolio</h3>
+        <nav>
+            <ul class="flex justify-center space-x-4 mt-2">
+                <li><a href="#about" class="hover:underline">About</a></li>
+                <li><a href="#projects" class="hover:underline">Projects</a></li>
+                <li><a href="#contact" class="hover:underline">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="about" class="p-8 text-center bg-gray-300">
+        <h2 class="text-2xl font-semibold mb-4">About Me</h2>
+        <p>Write about yourself here.</p>
+    </section>
+    <section id="projects" class="p-8">
+        <h2 class="text-2xl font-semibold mb-4">Projects</h2>
+        <p>Showcase your projects here.</p>
+    </section>
+    <section id="contact" class="p-8">
+        <h2 class="text-2xl font-semibold mb-4">Contact</h2>
+        <p>Provide your contact information here.</p>
+    </section>
+    
+    <script>
+        // GSAP animations
+        gsap.from("header", { duration: 1, y: -100, opacity: 0, ease: "bounce" });
+        gsap.from("section", { duration: 1, opacity: 0, stagger: 0.3 });
+    </script>
+</body>
+</html>
