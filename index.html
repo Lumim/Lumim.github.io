@@ -3,48 +3,547 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Lummim Sarker Portefølje</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon-16x16.png">
     <!-- Tailwind CSS CDN -->
+    <link href="style.css" rel="stylesheet">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src=".script.js"></script> 
     <!-- GSAP CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <style>
+    <script type="text/javascript" src="./lib/jssor.core.js"></script>
+    <script type="text/javascript" src="./lib/jssor.slider.js"></script>
+    <script type="text/javascript" src="./lib/jssor.utils.js"></script>
+   
+   <style>
         /* Custom styles */
-        body {
-            font-family: 'Arial', sans-serif;
+        body,html {
+            font-family:'Roboto', sans-serif;
+            scroll-behavior: smooth;
         }
+        .video-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            padding-inline:2em;
+            padding-top:2em;
+        }
+        #upBtn {
+            display: none; /* Initially hidden */
+        }
+       
+        
     </style>
+ <script src="/script.js"></script>
+
+    <script>
+        //readmore 100 text
+  $(document).ready(function() {
+  const originalText = $('#text').text();
+  const originalText2 = $('#text2').text();
+  const truncatedText = originalText.substring(0, 100) + '...';
+  const truncatedText2 = originalText2.substring(0, 120) + '...';
+  
+  $('#text').text(truncatedText);
+
+  $('#readMoreBtn2').on('click', function() {
+    if ($(this).text() === 'Read more') {
+      $('#text').text(originalText);
+      $(this).text('Read less');
+    } else {
+      $('#text').text(truncatedText);
+      $(this).text('Read more');
+    }
+  });
+
+  $('#text2').text(truncatedText2);
+
+$('#readMoreBtn').on('click', function() {
+  if ($(this).text() === 'Read more') {
+    $('#text2').text(originalText2);
+    $(this).text('Read less');
+  } else {
+    $('#text2').text(truncatedText2);
+    $(this).text('Read more');
+  }
+});
+  // Smooth scrolling for "up" button
+  $('#upBtn').on('click', function() {
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
+    return false;
+  });
+
+  // Show or hide the "up" button
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('#upBtn').fadeIn();
+    } else {
+      $('#upBtn').fadeOut();
+    }
+  });
+});
+
+//-----------------++
+
+jQuery(document).ready(function ($) {
+    var options = {
+        $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+        $AutoPlaySteps: 4,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
+        $AutoPlayInterval: 4000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+        $PauseOnHover: 1,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+        $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+        $SlideDuration: 160,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+        $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+        $SlideWidth: 200,                                   //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+        //$SlideHeight: 150,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+        $SlideSpacing: 3, 					                //[Optional] Space between each slide in pixels, default value is 0
+        $DisplayPieces: 4,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+        $ParkingPosition: 0,                              //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+        $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+        $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+        $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+        $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
+            $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+            $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+            $AutoCenter: 0,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+            $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+            $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+            $SpacingX: 0,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+            $SpacingY: 0,                                   //[Optional] Vertical space between each item in pixel, default value is 0
+            $Orientation: 1                                 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+        },
+
+        $ArrowNavigatorOptions: {
+            $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+            $ChanceToShow: 1,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+            $AutoCenter: 2,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+            $Steps: 4                                       //[Optional] Steps to go for each navigation request, default value is 1
+        }
+    };
+
+    var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+    //responsive code begin
+    //you can remove responsive code if you don't want the slider scales while window resizes
+    function ScaleSlider() {
+        var bodyWidth = document.body.clientWidth;
+        if (bodyWidth)
+            jssor_slider1.$SetScaleWidth(Math.min(bodyWidth, 809));
+        else
+            window.setTimeout(ScaleSlider, 30);
+    }
+
+    ScaleSlider();
+
+    if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+        $(window).bind('resize', ScaleSlider);
+    }
+
+
+    //if (navigator.userAgent.match(/(iPhone|iPod|iPad)/)) {
+    //    $(window).bind("orientationchange", ScaleSlider);
+    //}
+    //responsive code end
+});
+//-------------
+    </script>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-blue-600 text-white p-4 text-center">
-        <img src="images/ppLummim.jpg" height="300px" width="300px" alt="">
-        <h1 class="text-3xl font-bold">Mohammad Lummim Sarker</h1>
-        <h2>Portfolio</h3>
-        <nav>
-            <ul class="flex justify-center space-x-4 mt-2">
-                <li><a href="#about" class="hover:underline">About</a></li>
-                <li><a href="#projects" class="hover:underline">Projects</a></li>
-                <li><a href="#contact" class="hover:underline">Contact</a></li>
+<body id="weatherContainer" class="bg-black text-white relative ">
+   
+    <header class="bg-black  bg-opacity-80 text-white p-4 text-center">
+        <h1 id="animated-text" class="about-me-text4 text-3xl font-bold uppercase">Lummim Sarker</h1>
+
+        <h2 id="portf" class="uppercase ">Portefølje</h3>
+        <nav class="uppercase">
+            <ul class="md:flex  lg:flex md:justify-center md:space-x-12 md:mt-2 s:inline lg:space-x-12 lg:mt-2">
+                <li id="home" class="homed bg-green-600 p-2 rounded-xl border-2"><a href="#about" class="hover:text--600  rounded-xl ">Om mig</a></li>
+                <li id="home2" class="homed2 bg-green-600 p-2 rounded-xl border-2"><a href="#projects" class="hover:text--600  rounded-xl ">Software</a></li>
+                <li id="home3" class="homed3 bg-green-600 p-2 rounded-xl border-2"><a href="#editing" class="hover:text--600  rounded-xl ">Design/Redigering</a></li>
+                <li id="home4" class="homed4 bg-green-600 p-2 rounded-xl border-2"><a href="#contact" class="hover:text--600  rounded-xl ">kontakt</a></li>
             </ul>
         </nav>
     </header>
-    <section id="about" class="p-8 text-center bg-gray-300">
-        <h2 class="text-2xl font-semibold mb-4">About Me</h2>
-        <p>Write about yourself here.</p>
+    <section id="about" class="md:flex lg:flex s:inline border rounded-l">
+        <div  class="s:w-full md:w-1/2 lg:w-1/2 p-8 text-center bg-gray-400 bg-opacity-80">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-600 uppercase">Udviklerrolle</h2>
+                <p id="about-text1 "class="about-me-text upercase">Jeg er en passioneret software- og it-nørd.</p>
+                <p class="about-me-text2">Softwareudvikler | Web IOS Android </p>
+                <p class="about-me-text3">Med design Sense og kreative redigeringer.</p>
+                <p class="about-me-text3">Jeg er indskrevet på mit første år på kandidatuddannelsen i datalogi og teknik på DTU.</p>
+
+        </div>
+        <div class="md:w-1/5 s:w-full s:pb-8 lg:w-1/5  relative p-4 text-center bg-gray-300 bg-opacity-80 border-r-2 border-yellow-600">
+            <h6 class=" text-xl font-semibold text-blue-600 uppercase mt-4">Stak</h2>
+            <div class="md:w-1/2 lg:w-1/2 ">
+                <img id="img1" src="images/1.png" width="100px" class="absolute" height="300px" alt=""> 
+                <img id="img2" src="images/2.png" width="100px"  height="300px" class="absolute" alt="">
+                <img id="img3" src="images/3.png" width="100px"  height="300px" class="sm:absolute m:absolute lg:absolute xl:absolute s:relative" alt="">
+                
+            </div>
+            <div class="ml-28 mt-4">
+                
+                <p class="text-sm text-metal-900">MERN Laravel Django No/SQL Java Php
+                </p>
+            </div>
+        </div>
+        <div  class="md:w-2/5 s:w-full lg:w-2/5 s:mt-8 p-8 text-center bg-gray-300 bg-opacity-80">
+            <h2 class="uppercase text-2xl font-semibold mb-4 text-yellow-600 ">Design og redigering</h2>
+            
+            <div class="md:w-1/2 lg:w-1/2">
+                <img id="img2" src="images/4.png" width="100px" class="absolute" height="300px" alt=""> 
+                <img id="img1" src="images/5.png" width="100px"  height="300px" class="absolute" alt="">
+                <img id="img3" src="images/6.png" width="100px"  height="300px" class="absolute" alt="">
+                
+            </div>
+            <div class="ml-28 mt-4 md:w-1/2 lg:w-1/2 ">
+              <p class="about-me-text2">
+                Jeg startede med fotografering og videoredigering i 2011, senere arbejdede jeg på forskellige selvstændige og personlige projekter udover min softwareingeniøruddannelse.
+              </p>
+               
+            </div>
+        </div>
+        <div class="md:w-1/5 s:w-full s:pb-8 lg:w-1/5  p-8 text-center  bg-gray-400 bg-opacity-80">
+            <h6 class=" text-xl font-semibold  text-yellow-600  uppercase">værktøjer</h2>
+                <p class="about-me-text2">Da vinci resolve | Adove XD | Canva | Pictory | AI | Photo Scape | Adobe and many others
+                </p>
+        </div>
     </section>
     <section id="projects" class="p-8">
-        <h2 class="text-2xl font-semibold mb-4">Projects</h2>
-        <p>Showcase your projects here.</p>
+        <h2 class="text-3xl underline font-bold mb-4 text-yellow-600  text-center">Projekter</h2>
+        <div class="container mx-auto py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="card bg-white shadow-md rounded-lg overflow-hidden "  >
+                    <img class="w-full h-48 object-cover p-2 cursor-pointer" width="200px" height="400px" src="images/paypol.png" alt="Paypoll" onclick="window.open('https://apkcombo.com/paypoll/com.mindscapeltd.paypoll/', '_blank')">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-xl text-blue-500 mb-2  cursor-pointer"  onclick="window.open('https://apkcombo.com/paypoll/com.mindscapeltd.paypoll/', '_blank')">PayPoll - 2018-2019</h3>
+                        <p class="text-gray-500 font-semibold text-md">Paypoll Earn Real Money From Anywhere, Anytime.</p>
+                        <p class="text-gray-700 text-sm">Arbejdede i Backend-systemet i Laravel og Jquery med CSS og blade php</p>
+                        
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="card bg-white shadow-md rounded-lg overflow-hidden">
+                    <img class="w-full p-2 h-48 object-cover cursor-pointer" src="images/sofor.jpg" alt="Sofor Rides"  onclick="window.open('https://play.google.com/store/apps/details?id=com.sofor.user&hl=da', '_blank')">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-xl text-blue-500 mb-2 cursor-pointer" onclick="window.open('https://play.google.com/store/apps/details?id=com.sofor.user&hl=da', '_blank')">Sofor Rides- Ride Sharing</h3>
+                        <p id="text" class="text-gray-500  text-md">Sofor er en ride-sharing app, der tilbyder en række transportmuligheder, herunder biler, 
+                            cykler, CNG, luksusbiler og ambulancer. Med dens brugervenlige grænseflade kan passagerer
+                             hurtigt og nemt anmode om en tur og spore deres chaufførs placering for øget sikkerhed. 
+                             Sofor sikrer også rimelige priser for alle forlystelser og anvender sikkerhedsforanstaltninger 
+                             for at beskytte både chauffører og passagerer. Uanset om du har brug for en hurtig tur til kontoret
+                              eller akut lægetransport, har Sofor dig dækket.<span class="font-semibold"> Mit eget produkt - Lummim</span></p>
+                              
+                              <button id="readMoreBtn2" class="mt-2 text-blue-500 hover:underline">Read more</button>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="card bg-white shadow-md rounded-lg overflow-hidden " >
+                    <img class="w-full p-2 h-48  object-cover cursor-pointer" height="100px" width="100px" src="images/mplogo.jpg" alt="Muktopaath" onclick="window.open('https://muktopaath.gov.bd/', '_blank')">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-xl text-blue-500 mb-2 cursor-pointer" onclick="window.open('https://muktopaath.gov.bd/', '_blank')">Muktopaath- The largest Elearning platform</h3>
+                        <p id="text2" class="text-gray-700">The largest e-Learning platform in Bangla. Muktopaath has 2.35 millions of Users 298 Running Courses 87 Partners 50 Instructor. Join our platform and choose courses on your preferred subjects. I was the only frontend software engineer to desing and development during my tenure in Orange BD in 2023.</p>
+                        <button id="readMoreBtn" class="mt-2 text-blue-500 hover:underline">Read more</button>
+                    </div>
+                </div>
+                 <!-- Card Gymrevenue -->
+                 <div class="card bg-white shadow-md rounded-lg overflow-hidden " >
+                    <img class="w-full p-2 h-48 object-cover cursor-pointer" src="images/gym.png" alt="Gymrevenue" onclick="window.open('https://www.gymrevenue.com/', '_blank')">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-xl text-blue-500 mb-2 cursor-pointer" onclick="window.open('https://www.gymrevenue.com/', '_blank')">Gymrevenue ERP USA</h3>
+                        <p class="text-gray-700">Details about card 3. This is some example text to describe the content of the card.</p>
+                    </div>
+                </div>
+                 <!-- Card 3 -->
+                 <div class="card bg-white shadow-md rounded-lg overflow-hidden" onclick="window.open('https://www.saiyonee.com/', '_blank')">
+                    <img class="w-full p-2 h-48 object-cover  cursor-pointer" src="https://via.placeholder.com/400x300" alt="Card Image 3">
+                    <hr>
+                    <div class="p-6 ">
+                        <h3 class="text-lg font-semibold mb-2">Card Title 3</h3>
+                        <p class="text-gray-700">Details about card 3. This is some example text to describe the content of the card.</p>
+                    </div>
+                </div>
+                 <!-- Card 3 -->
+                 <div class="card bg-white shadow-md rounded-lg overflow-hidden cursor-pointer" >
+                    <img class="w-full p-2 h-48 object-cover  cursor-pointer" src="images/deshifarmers.png" alt="Card Image 3" onclick="window.open('https://www.deshifarmer.co/solutions', '_blank')">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 text-blue-500" onclick="window.open('https://www.deshifarmer.co/solutions', '_blank')">Desifarmer</h3>
+                        <p class="text-gray-700">A 'Seed to Market' agritech platform solution for the tangible products for both the farmers  </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <h2 class="text-3xl underline font-bold mb-4 text-yellow-400  text-center"><a href="https://play.google.com/store/apps/dev?id=8530487840231695304&hl=da" target="_blank">Click here to see all my projects in Google Play Store</a></h2>
+        <div class="px-12 ">
+            <a class=" text-yellow-600 font-semibold ">Webry.tech er en vision for mig - hvor vi - bro - tech er grundlagt i 2012, da vi startede vores bacheloruniversitet, stadig nu, hvis vi laver et projekt, offentliggør vi det her. Webry.tech er grundlagt af stort set to af os, en anden fyr har et marketingstudium, og han tog det samme bacheloruniversitet i Business Administration.</a>
+
+        </div>
+    </section>
+    <section id="editing" class="p-8">
+        <h2 class="text-2xl font-semibold mb-4">Editing</h2>
+
+        <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
+
+            <!-- Loading Screen -->
+            <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+                <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+                    background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
+                </div>
+                <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
+                    top: 0px; left: 0px;width: 100%;height:100%;">
+                </div>
+            </div>
+    
+            <!-- Slides Container -->
+            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 809px; height: 150px; overflow: hidden;">
+                <div><img u="image" src="./images/1.png" /></div>
+                <div><img u="image" src="./images/2.png" /></div>
+                <div><img u="image" src="./images/3.png" /></div>
+                <div><img u="image" src="./images/4.png" /></div>
+                <div><img u="image" src="./images/5.png" /></div>
+                <div><img u="image" src="./images/6.png" /></div>
+                <div><img u="image" src="./images/1.png" /></div>
+                <div><img u="image" src="./images/2.png" /></div>
+                
+            </div>
+            
+            <!-- Bullet Navigator Skin Begin -->
+            <style>
+                /* jssor slider bullet navigator skin 03 css */
+                /*
+                .jssorb03 div           (normal);
+                .jssorb03 div:hover     (normal mouseover);
+                .jssorb03 .av           (active);
+                .jssorb03 .av:hover     (active mouseover);
+                .jssorb03 .dn           (mousedown);
+                */
+                .jssorb03 div, .jssorb03 div:hover, .jssorb03 .av
+                {
+                    background: url(../img/b03.png) no-repeat;
+                    overflow:hidden;
+                    cursor: pointer;
+                }
+                .jssorb03 div { background-position: -5px -4px; }
+                .jssorb03 div:hover, .jssorb03 .av:hover { background-position: -35px -4px; }
+                .jssorb03 .av { background-position: -65px -4px; }
+                .jssorb03 .dn, .jssorb03 .dn:hover { background-position: -95px -4px; }
+            </style>
+            <!-- bullet navigator container -->
+            <div u="navigator" class="jssorb03" style="position: absolute; bottom: 4px; right: 6px;">
+                <!-- bullet navigator item prototype -->
+                <div u="prototype" style="position: absolute; width: 21px; height: 21px; text-align:center; line-height:21px; color:white; font-size:12px;"><NumberTemplate></NumberTemplate></div>
+            </div>
+            <!-- Bullet Navigator Skin End -->
+            
+            <!-- Arrow Navigator Skin Begin -->
+            <style>
+                /* jssor slider arrow navigator skin 03 css */
+                /*
+                .jssora03l              (normal);
+                .jssora03r              (normal);
+                .jssora03l:hover        (normal mouseover);
+                .jssora03r:hover        (normal mouseover);
+                .jssora03ldn            (mousedown);
+                .jssora03rdn            (mousedown);
+                */
+                .jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
+                {
+                    position: absolute;
+                    cursor: pointer;
+                    display: block;
+                    background: url(../img/a03.png) no-repeat;
+                    overflow:hidden;
+                }
+                .jssora03l { background-position: -3px -33px; }
+                .jssora03r { background-position: -63px -33px; }
+                .jssora03l:hover { background-position: -123px -33px; }
+                .jssora03r:hover { background-position: -183px -33px; }
+                .jssora03ldn { background-position: -243px -33px; }
+                .jssora03rdn { background-position: -303px -33px; }
+            </style>
+            <!-- Arrow Left -->
+            <span u="arrowleft" class="jssora03l" style="width: 55px; height: 55px; top: 123px; left: 8px;">
+            </span>
+            <!-- Arrow Right -->
+            <span u="arrowright" class="jssora03r" style="width: 55px; height: 55px; top: 123px; right: 8px">
+            </span>
+            <!-- Arrow Navigator Skin End -->
+            <a style="display: none" href="http://www.jssor.com">javascript</a>
+        </div>
     </section>
     <section id="contact" class="p-8">
-        <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-        <p>Provide your contact information here.</p>
+      
+        <button id="upBtn" class="fixed bottom-4 w-12 right-4 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700">
+            Top
+          </button>
     </section>
     
+
+    <video autoplay muted loop class="video-bg relative bottom-0 right-0">
+        <source src="images/lamim.mp4" type="video/mp4">
+        71607573
+      </video>
+      <div class="video-bg text-center">
+        <p class="text-green-600 p-2">All right researved © 2024 | Lummim Sarker |🖥️ | Phone: +45 71607573 | lamimsarker@gmail.com | Herlev 2860, Greater København, Denmark</p>
+        <a href="https://www.canva.com/design/DAGGbaCMdAc/HSo5a9LLaxg34ciABx2cNw/view?utm_content=DAGGbaCMdAc&utm_campaign=designshare&utm_medium=link&utm_source=editor">View Resume Now</a>
+    </div>
     <script>
         // GSAP animations
-        gsap.from("header", { duration: 1, y: -100, opacity: 0, ease: "bounce" });
-        gsap.from("section", { duration: 1, opacity: 0, stagger: 0.3 });
+        gsap.from("header", { duration: 2, y: -100, opacity: 0, ease: "bounce" });
+        gsap.from("section", { duration: 2, opacity: 0, stagger: 0.3 });
+        gsap.to("#animated-text", {
+            duration: 2,
+            text: "Lummim Sarker",
+            ease: "power4.out",
+            repeat: -1,
+            yoyo: true,
+            delay:1
+        });
+
+        const box = document.getElementById('home');
+        const box2 = document.getElementById('home2');
+        const box3 = document.getElementById('home3');
+        const box4 = document.getElementById('home4');
+        box.addEventListener('mouseenter', () => {
+            gsap.to('.homed', {
+                duration: 0.3,
+                scale: 1.1
+            });
+        });
+        box.addEventListener('mouseleave', () => {
+            gsap.to('.homed', {
+                duration: 0.3,
+                scale: 1
+            });
+        });
+        box2.addEventListener('mouseenter', () => {
+            gsap.to('.homed2', {
+                duration: 0.3,
+                scale: 1.1
+            });
+        });
+        box2.addEventListener('mouseleave', () => {
+            gsap.to('.homed2', {
+                duration: 0.3,
+                scale: 1
+            });
+        });
+        box3.addEventListener('mouseenter', () => {
+            gsap.to('.homed3', {
+                duration: 0.3,
+                scale: 1.1
+            });
+        });
+        box3.addEventListener('mouseleave', () => {
+            gsap.to('.homed3', {
+                duration: 0.3,
+                scale: 1
+            });
+        });
+        box4.addEventListener('mouseenter', () => {
+            gsap.to('.homed4', {
+                duration: 0.3,
+                scale: 1.1
+            });
+        });
+        box4.addEventListener('mouseleave', () => {
+            gsap.to('.homed4', {
+                duration: 0.3,
+                scale: 1
+            });
+        });
+        
+        gsap.from(".about-me-text", {
+            opacity: 0,
+            x: -220,
+            duration: 1,
+            stagger: 0.5,
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 80%",
+                end: "bottom 80%",
+                scrub: true,
+            }
+        });
+        gsap.from("#about-text1", {
+            opacity: 0,
+            x: -300,
+            duration: 1.5,
+            stagger: 0.05,
+            ease: "power2.out",
+        });
+        gsap.from(".about-me-text2", {
+            opacity: 0,
+            x: -300,
+            duration: 1.5,
+            stagger: 0.05,
+            ease: "power2.out",
+            delay: 1
+        });
+        gsap.from(['.about-me-text4','#portf'], {
+            opacity: 0,
+            y: 300,
+            boxShadow: "0px 0px 20px 20px red",
+            duration:1.5,
+            stagger: 0.05,
+            ease: "power2.out",
+            delay: 2 // Delay the animation by 3 seconds
+        });
+        gsap.to('.about-me-text4', {
+            opacity: 1,
+            boxShadow: "0px 0px 4px 4px yellow",
+            marginBottom:"20px",
+            backgroundColor:"white",
+            fontSize:"28px",
+            color:"blue",
+            duration:1.5,
+            stagger: 0.05,
+            ease: "power2.out",
+            delay: 5,
+            yoyo:true
+        });
+      
+        gsap.from('.about-me-text3', {
+            opacity: 0,
+            x: -300,
+            duration:1.5,
+            stagger: 0.05,
+            ease: "power2.out",
+            delay: 2 // Delay the animation by 3 seconds
+        });
+        gsap.from('#img1',{
+            opacity:0,
+            x:300,
+            duration:1.5,
+            stagger:0.5,
+            ease:"power2.out",
+            delay:1
+        });
+        gsap.from('#img2',{
+            opacity:0,
+            x:-300,
+            duration:1.5,
+            stagger:0.5,
+            ease:"power2.out",
+            delay:2
+        });
+        gsap.from('#img3',{
+            opacity:0,
+            x:-300,
+            duration:1.5,
+            stagger:0.5,
+            ease:"power2.out",
+            delay:3
+        });
+       
     </script>
 </body>
 </html>
