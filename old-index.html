@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon-16x16.png">
     <!-- Tailwind CSS CDN -->
     <link href="style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -24,7 +24,6 @@
         body,html {
             font-family:'Roboto', sans-serif;
             scroll-behavior: smooth;
-            overflow-x:hidden;
         }
         .video-bg {
             width: 100%;
@@ -128,10 +127,10 @@ jQuery(document).ready(function ($) {
         $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
         $SlideDuration: 160,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
         $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
-        $SlideWidth: 600,                                   //[Optional] Width of every slide in pixels, default value is width of 'slides' container
-        $SlideHeight: 600,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+        $SlideWidth: 300,                                   //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+        $SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
         $SlideSpacing: 3, 					                //[Optional] Space between each slide in pixels, default value is 0
-        $DisplayPieces:2,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+        $DisplayPieces: 4,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
         $ParkingPosition: 0,                              //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
         $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
         $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
@@ -163,7 +162,7 @@ jQuery(document).ready(function ($) {
     function ScaleSlider() {
         var bodyWidth = document.body.clientWidth;
         if (bodyWidth)
-            jssor_slider1.$SetScaleWidth(Math.min(bodyWidth));
+            jssor_slider1.$SetScaleWidth(Math.min(bodyWidth, 809));
         else
             window.setTimeout(ScaleSlider, 30);
     }
@@ -186,7 +185,7 @@ jQuery(document).ready(function ($) {
 <body id="weatherContainer" class="bg-black text-white relative ">
    
     <header class="bg-black  bg-opacity-80 text-white p-4 text-center">
-        <h1 id="animated-text" class="about-me-text4 text-3xl font-bold uppercase">Lummim Sarker <p class="text-sm text-blue-500">  Kandidatstuderende i datalogi og teknik ved DTU-Danmark Tekniske Universitet</p></h1>
+        <h1 id="animated-text" class="about-me-text4 text-3xl font-bold uppercase">Lummim Sarker</h1>
 
         <h2 id="portf" class="uppercase ">Portefølje</h3>
         <nav class="uppercase">
@@ -207,7 +206,7 @@ jQuery(document).ready(function ($) {
                 <p class="about-me-text3">Jeg er indskrevet på mit første år på kandidatuddannelsen i datalogi og teknik på DTU.</p>
 
         </div>
-        <div class="md:w-1/5 s:w-full s:pb-8 lg:w-1/5  relative p-4 text-center bg-gray-300 bg-opacity-80 border-r-2 border-dotted border-yellow-600">
+        <div class="md:w-1/5 s:w-full s:pb-8 lg:w-1/5  relative p-4 text-center bg-gray-300 bg-opacity-80 border-r-2 border-yellow-600">
             <h6 class=" text-xl font-semibold text-blue-600 uppercase mt-4">Stak</h2>
             <div class="md:w-1/2 lg:w-1/2 ">
                 <img id="img1" src="images/1.png" width="100px" class="absolute" height="300px" alt=""> 
@@ -277,7 +276,7 @@ jQuery(document).ready(function ($) {
                     <img class="w-full p-2 h-48  object-cover cursor-pointer" height="100px" width="100px" src="images/mplogo.jpg" alt="Muktopaath" onclick="window.open('https://muktopaath.gov.bd/', '_blank')">
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-xl text-blue-500 mb-2 cursor-pointer" onclick="window.open('https://muktopaath.gov.bd/', '_blank')">Muktopaath- The largest Elearning platform</h3>
-                        <p id="text2" class="text-gray-700">Den største e-læringsplatform i Bangla. Muktopaath har 2,35 millioner brugere 298 løbende kurser 87 Partnere 50 Instruktør. Tilmeld dig vores platform og vælg kurser om dine foretrukne emner. Jeg var den eneste frontend-softwareingeniør til design og udvikling under min embedsperiode i Orange BD i 2023.</p>
+                        <p id="text2" class="text-gray-700">The largest e-Learning platform in Bangla. Muktopaath has 2.35 millions of Users 298 Running Courses 87 Partners 50 Instructor. Join our platform and choose courses on your preferred subjects. I was the only frontend software engineer to desing and development during my tenure in Orange BD in 2023.</p>
                         <button id="readMoreBtn" class="mt-2 text-blue-500 hover:underline">Read more</button>
                     </div>
                 </div>
@@ -312,7 +311,7 @@ jQuery(document).ready(function ($) {
 
             </div>
         </div>
-        <h2 class="text-3xl underline font-bold mb-4 text-yellow-400  text-center"><a href="https://play.google.com/store/apps/dev?id=8530487840231695304&hl=da" target="_blank">Klik her for at se alle mine projekter i Google Play Butik</a></h2>
+        <h2 class="text-3xl underline font-bold mb-4 text-yellow-400  text-center"><a href="https://play.google.com/store/apps/dev?id=8530487840231695304&hl=da" target="_blank">Click here to see all my projects in Google Play Store</a></h2>
         <div class="px-12 ">
             <a class=" text-yellow-600 font-semibold ">Webry.tech er en vision for mig - hvor vi - bro - tech er grundlagt i 2012, da vi startede vores bacheloruniversitet, stadig nu, hvis vi laver et projekt, offentliggør vi det her. Webry.tech er grundlagt af stort set to af os, en anden fyr har et marketingstudium, og han tog det samme bacheloruniversitet i Business Administration.</a>
 
@@ -320,11 +319,11 @@ jQuery(document).ready(function ($) {
     </section>
     <section id="editing" class="p-8">
         <h2 class="text-3xl underline font-bold mb-4 text-yellow-600  text-center">Editing</h2>
-        <div class="p-2 text-center mb-8  rounded-l ">
-            <a href="https://www.youtube.com/@lamimsarker" target="_blank" class=" bg-white px-2 text-green-600 font-bold text-3xl justify-center m-auto underline"><i class="fa fa-video" area-hidden="true"></i> YouTube Channel: https://www.youtube.com/@lamimsarker</a>
+        <div class="px-12 ">
+            <a class=" text-green-600 font-semibold ">Webry.tech er en vision for mig - hvor vi - bro - tech er grundlagt i 2012, da vi startede vores bacheloruniversitet, stadig nu, hvis vi laver et projekt, offentliggør vi det her. Webry.tech er grundlagt af stort set to af os, en anden fyr har et marketingstudium, og han tog det samme bacheloruniversitet i Business Administration.</a>
 
         </div>
-        <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 2000px; height: 600px; overflow: hidden;">
+        <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 100%; height: 350px; overflow: hidden;">
 
             <!-- Loading Screen -->
             <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -337,26 +336,23 @@ jQuery(document).ready(function ($) {
             </div>
     
             <!-- Slides Container -->
-            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 2000px; height: 600px; overflow: hidden;">
-                <div class="inline"><img u="image" src="./images/90screw.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Product img</h3></div>
-                <div><img u="image" src="./images/90screwlogo.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Logo design</h3></div>
-                <div><img u="image" src="./images/90screwmodel.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Model img</h3></div>
-                <div><img u="image" src="./images/deshifarmers.png" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Brand design</h3></div>
-                <div><img u="image" src="./images/ramadan.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Calender design</h3></div>
-                <div><img u="image" src="./images/soforridelogo.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Logo Design</h3></div>
-                <div><img u="image" src="./images/laptop.png" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Mockup design</h3></div>
-                <div><img u="image" src="./images/go.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Abstract design</h3></div>
-                <div><img u="image" src="./images/branding.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Brand design</h3></div>
-                <div><img u="image" src="./images/content.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Content design for social media</h3></div>
-                <div><img u="image" src="./images/banner.png" /><h3 class="bg-white text-xl text-black text-center bottom-0">Social Banner design</h3></div>
-                <div><img u="image" src="./images/flood.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Awareness post design</h3></div>
-                <div><img u="image" src="./images/food.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Foodography</h3></div>
-                <div><img u="image" src="./images/event design.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Event poster design</h3></div>
-                <div><img u="image" src="./images/facebook post desing.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Facebook post design</h3></div>
-                <div><img u="image" src="./images/banner.png" /><h3 class="bg-white text-xl text-black text-center bottom-0">Banner post design</h3></div>
-                <div><iframe width="600" height="600" src="https://www.youtube.com/embed/e3SpEPG2pxw?si=HloSZ7wgBW4lkIIn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><h3 class="bg-white text-xl text-black text-center bottom-0">Food blogging video</h3></div>
-                <div><iframe width="600" height="600" src="https://www.youtube.com/embed/mPGJjJrf7VM?si=aVdT_IvX6G3_ps2D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-            
+            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 100%; height: 350px; overflow: hidden;">
+                <div class="inline"><img u="image" src="./images/90screw.jpg" /> <P class="bg-black text-white text-center bottom-0">hello</P></div>
+                <div><img u="image" src="./images/90screwlogo.jpg" /></div>
+                <div><img u="image" src="./images/90screwmodel.jpg" /></div>
+                <div><img u="image" src="./images/deshifarmers.png" /></div>
+                <div><img u="image" src="./images/ramadan.jpg" /></div>
+                <div><img u="image" src="./images/soforridelogo.jpg" /></div>
+                <div><img u="image" src="./images/laptop.png" /></div>
+                <div><img u="image" src="./images/go.jpg" /></div>
+                <div><img u="image" src="./images/branding.jpg" /></div>
+                <div><img u="image" src="./images/gym.png" /></div>
+                <div><img u="image" src="./images/90screwmodel.jpg" /></div>
+                <div><img u="image" src="./images/deshifarmers.png" /></div>
+                <div><img u="image" src="./images/ramadan.jpg" /></div>
+                <div><img u="image" src="./images/soforridelogo.jpg" /></div>
+                <div><img u="image" src="./images/laptop.png" /></div>
+                <div><img u="image" src="./images/go.jpg" /></div>
             </div>
             
             <!-- Bullet Navigator Skin Begin -->
@@ -381,7 +377,7 @@ jQuery(document).ready(function ($) {
                 .jssorb03 .dn, .jssorb03 .dn:hover { background-position: -95px -4px; }
             </style>
             <!-- bullet navigator container -->
-            <div u="navigator" class="jssorb03 bg-black" style="position: absolute; bottom: 4px; right: 6px;">
+            <div u="navigator" class="jssorb03" style="position: absolute; bottom: 4px; right: 6px;">
                 <!-- bullet navigator item prototype -->
                 <div u="prototype" style="position: absolute; width: 21px; height: 21px; text-align:center; line-height:21px; color:white; font-size:12px;"><NumberTemplate></NumberTemplate></div>
             </div>
@@ -420,36 +416,12 @@ jQuery(document).ready(function ($) {
             <span u="arrowright" class="jssora03r" style="width: 55px; height: 55px; top: 123px; right: 8px">
             </span>
             <!-- Arrow Navigator Skin End -->
-            <a style="display: none" href="http://www.jssor.com">Lummim</a>
+            <a style="display: none" href="http://www.jssor.com">javascript</a>
         </div>
         
     </section>
     <section id="contact" class="p-8">
-        <h2 class="text-3xl underline font-bold pb-4 text-yellow-600  text-center">Visionery</h2>
-        <div class="flex">
-            <div class="w-1/2 px-2">
-                <p>Mine to venner og jeg startede som studenteriværksættere i Bangladesh og begyndte på en iværksætterrejse sideløbende med vores bachelorstudier. I vores team påtog jeg mig rollen som IT-specialisten, der varetog alt fra softwareudvikling til digital markedsføring. Jeg troede på at dykke lige ind i stedet for at vente på det perfekte øjeblik.
-
-                    Vores første satsning var Deshal, en Facebook-markedsbutik, der sælger økologisk mælk direkte fra gårde til dørtrin. Deshals succes inspirerede os til at udvide til leveringstjenester med Druuto. Vi sikrede inkubationsmidler, søgte startfinansiering og lancerede til sidst Druuto med flere leverandører. Vores markedsundersøgelser havde dog nogle mangler, som vi lærte af.
-                    
-                    I 2018 grundlagde vi Deshifarmer, en innovativ virksomhed, der med tiden ville forvandle sig til den største agritech-virksomhed i Bangladesh, takket være på hinanden følgende investeringer i 2018 og 2022.
-                    
-                    På grund af min baggrund inden for IT og en forkærlighed for selvstændigt arbejde, var jeg også med til at stifte Webro Technology sammen med en marketingekspert, og udnyttede vores komplementære kompetencer til at bygge endnu et succesfuldt foretagende. </p>
-            </div>
-            <div class="w-1/2 px-2">
-                <p>Starting as student entrepreneurs in Bangladesh, my two friends and I embarked on an entrepreneurial journey alongside our bachelor's studies. In our team, I took on the role of the IT specialist, handling everything from software development to digital marketing. I believed in diving right in, rather than waiting for the perfect moment.
-
-                    Our first venture was Deshal, a Facebook marketplace store selling organic milk directly from farms to doorsteps. The success of Deshal inspired us to expand into delivery services with Druuto. We secured incubation funds, pursued seed funding, and eventually launched Druuto with several vendors. However, our market research had some shortcomings that we learned from.
-                    
-                    In 2018, we founded Deshifarmer, an innovative business that would eventually transform into the largest agritech company in Bangladesh, thanks to consecutive investments in 2018 and 2022.
-                    
-                    Given my background in IT and a penchant for independent work, I also co-founded Webro Technology with a marketing expert, leveraging our complementary skills to build another successful venture. </p>
-            </div>
-
-            
-            
-        </div>
-        <h2 class="text-3xl  font-bold pb-4 text-blue-500  text-center">Jeh Tak :)</h2>
+      
         <button id="upBtn" class="fixed bottom-4 w-12 right-4 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700">
             Top
           </button>
@@ -461,22 +433,21 @@ jQuery(document).ready(function ($) {
         71607573
       </video>
       <div class="video-bg text-center">
-        <p class="text-green-600 p-2">Alle rettigheder reserverede © 2024 | Lummim Sarker |🖥️ | Cell: +45 71607573 | lamimsarker@gmail.com | Herlev 2860, Greater København, Denmark</p>
-        <a class="text-2xl underline" href="https://www.canva.com/design/DAGGbaCMdAc/HSo5a9LLaxg34ciABx2cNw/view?utm_content=DAGGbaCMdAc&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank"> 
-            <i class="fa  fa-spin" aria-hidden="true">~ </i> Click to View Resume Now <i class="fa  fa-spin" aria-hidden="true">~</i></a>
+        <p class="text-green-600 p-2">All right researved © 2024 | Lummim Sarker |🖥️ | Phone: +45 71607573 | lamimsarker@gmail.com | Herlev 2860, Greater København, Denmark</p>
+        <a href="https://www.canva.com/design/DAGGbaCMdAc/HSo5a9LLaxg34ciABx2cNw/view?utm_content=DAGGbaCMdAc&utm_campaign=designshare&utm_medium=link&utm_source=editor">View Resume Now</a>
     </div>
     <script>
         // GSAP animations
         gsap.from("header", { duration: 2, y: -100, opacity: 0, ease: "bounce" });
         gsap.from("section", { duration: 2, opacity: 0, stagger: 0.3 });
-      /*   gsap.to("#animated-text", {
+        gsap.to("#animated-text", {
             duration: 2,
             text: "Lummim Sarker",
             ease: "power4.out",
             repeat: -1,
             yoyo: true,
             delay:1
-        }); */
+        });
 
         const box = document.getElementById('home');
         const box2 = document.getElementById('home2');
@@ -567,7 +538,19 @@ jQuery(document).ready(function ($) {
             ease: "power2.out",
             delay: 2 // Delay the animation by 3 seconds
         });
-        gsap.to('#animated-text',  {text: " Mohammad Lummim Sarker",opacity:1, duration: 1, delay: 4, ease: "none"});
+        gsap.to('.about-me-text4', {
+            opacity: 1,
+            boxShadow: "0px 0px 4px 4px yellow",
+            marginBottom:"20px",
+            backgroundColor:"white",
+            fontSize:"28px",
+            color:"blue",
+            duration:1.5,
+            stagger: 0.05,
+            ease: "power2.out",
+            delay: 5,
+            yoyo:true
+        });
       
         gsap.from('.about-me-text3', {
             opacity: 0,
