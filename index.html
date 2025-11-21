@@ -1,626 +1,565 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lummim Sarker Portefølje</title>
-    <link rel="icon" type="image/x-icon" href="images/logo.png">
-    <!-- Tailwind CSS CDN -->
-    <link href="style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src=".script.js"></script> 
-    <!-- GSAP CDN -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <script type="text/javascript" src="./lib/jssor.core.js"></script>
-    <script type="text/javascript" src="./lib/jssor.slider.js"></script>
-    <script type="text/javascript" src="./lib/jssor.utils.js"></script>
-   
-   <style>
-        /* Custom styles */
-        body,html {
-            font-family:'Roboto', sans-serif;
-            scroll-behavior: smooth;
-            overflow-x:hidden;
-        }
-        .video-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            padding-inline:2em;
-            padding-top:2em;
-        }
-        #upBtn {
-            display: none; /* Initially hidden */
-        }
-       
-        
-    </style>
- <script src="/script.js"></script>
-
-    <script>
-        //readmore 100 text
-  $(document).ready(function() {
-  const originalText = $('#text').text();
-  const originalText2 = $('#text2').text();
-  const originalText3 = $('#text3').text();
-  const originalText4 = $('#text4').text();
-  const truncatedText = originalText.substring(0, 100) + '...';
-  const truncatedText2 = originalText2.substring(0, 100) + '...';
-  const truncatedText3 = originalText3.substring(0, 100) + '...';
-  const truncatedText4 = originalText4.substring(0, 100) + '...';
-  
-  $('#text').text(truncatedText);
-
-  $('#readMoreBtn2').on('click', function() {
-    if ($(this).text() === 'Read more') {
-      $('#text').text(originalText);
-      $(this).text('Read less');
-    } else {
-      $('#text').text(truncatedText);
-      $(this).text('Read more');
-    }
-  });
-
-  $('#text2').text(truncatedText2);
-
-    $('#readMoreBtn').on('click', function() {
-    if ($(this).text() === 'Read more') {
-        $('#text2').text(originalText2);
-        $(this).text('Read less');
-    } else {
-        $('#text2').text(truncatedText2);
-        $(this).text('Read more');
-    }
-    });
-    $('#text3').text(truncatedText3);
-
-    $('#readMoreBtn3').on('click', function() {
-    if ($(this).text() === 'Read more') {
-        $('#text3').text(originalText3);
-        $(this).text('Read less');
-    } else {
-        $('#text3').text(truncatedText3);
-        $(this).text('Read more');
-    }
-    });
-    
-    $('#text4').text(truncatedText4);
-
-    $('#readMoreBtn4').on('click', function() {
-    if ($(this).text() === 'Read more') {
-        $('#text4').text(originalText4);
-        $(this).text('Read less');
-    } else {
-        $('#text4').text(truncatedText4);
-        $(this).text('Read more');
-    }
-    });
-  // Smooth scrolling for "up" button
-  $('#upBtn').on('click', function() {
-    $('html, body').animate({ scrollTop: 0 }, 'slow');
-    return false;
-  });
-
-  // Show or hide the "up" button
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('#upBtn').fadeIn();
-    } else {
-      $('#upBtn').fadeOut();
-    }
-  });
-});
-
-//-----------------++
-
-jQuery(document).ready(function ($) {
-    var options = {
-        $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
-        $AutoPlaySteps: 4,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
-        $AutoPlayInterval: 4000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
-        $PauseOnHover: 1,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
-
-        $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
-        $SlideDuration: 160,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
-        $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
-        $SlideWidth: 600,                                   //[Optional] Width of every slide in pixels, default value is width of 'slides' container
-        $SlideHeight: 600,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
-        $SlideSpacing: 3, 					                //[Optional] Space between each slide in pixels, default value is 0
-        $DisplayPieces:2,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
-        $ParkingPosition: 0,                              //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
-        $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
-        $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
-        $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-
-        $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
-            $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
-            $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-            $AutoCenter: 0,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-            $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
-            $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
-            $SpacingX: 0,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
-            $SpacingY: 0,                                   //[Optional] Vertical space between each item in pixel, default value is 0
-            $Orientation: 1                                 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
-        },
-
-        $ArrowNavigatorOptions: {
-            $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
-            $ChanceToShow: 1,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-            $AutoCenter: 2,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-            $Steps: 5                                       //[Optional] Steps to go for each navigation request, default value is 1
-        }
-    };
-
-    var jssor_slider1 = new $JssorSlider$("slider1_container", options);
-
-    //responsive code begin
-    //you can remove responsive code if you don't want the slider scales while window resizes
-    function ScaleSlider() {
-        var bodyWidth = document.body.clientWidth;
-        if (bodyWidth)
-            jssor_slider1.$SetScaleWidth(Math.min(bodyWidth));
-        else
-            window.setTimeout(ScaleSlider, 30);
-    }
-
-    ScaleSlider();
-
-    if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
-        $(window).bind('resize', ScaleSlider);
-    }
-
-
-    //if (navigator.userAgent.match(/(iPhone|iPod|iPad)/)) {
-    //    $(window).bind("orientationchange", ScaleSlider);
-    //}
-    //responsive code end
-});
-//-------------
-    </script>
-    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="Lummim Sarker – Softwareudvikler, kandidatstuderende i datalogi og teknik ved DTU, med erfaring i web, iOS, Android, design og redigering.">
+    <meta name="author" content="Lummim Sarker">
+    <title>Lummim Sarker | Software Engineer & MSc Student</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="assets/css/meyawo.css">
 </head>
-<body id="weatherContainer" class="bg-black text-white relative ">
-   
-    <header class="bg-black  bg-opacity-80 text-white p-4 text-center">
-        <a href="index.html"><img style="    width: 182px;
-            top: -8px;
-            left: 1em;" src="images/logo.png"  class="-z-2 lg:fixed md:block s:fixed" alt=""></a>
-        <h1 id="animated-text" class="about-me-text4 text-3xl font-bold uppercase">Lummim Sarker <p class="text-sm text-blue-500">  Kandidatstuderende i datalogi og teknik ved DTU-Danmark Tekniske Universitet</p></h1>
 
-        <h2 id="portf" class="uppercase ">Portefølje</h3>
-        <nav class="uppercase">
-            <ul class="md:flex  lg:flex md:justify-center md:space-x-12 md:mt-2 s:inline lg:space-x-12 lg:mt-2">
-                <li id="home" class="homed bg-green-600 p-2 rounded-xl border-2"><a href="#about" class="hover:text--600  rounded-xl ">Om mig</a></li>
-                <li id="home2" class="homed2 bg-green-600 p-2 rounded-xl border-2"><a href="#projects" class="hover:text--600  rounded-xl ">Software</a></li>
-                <li id="home3" class="homed3 bg-green-600 p-2 rounded-xl border-2"><a href="#editing" class="hover:text--600  rounded-xl ">Design/Redigering</a></li>
-                <li id="home4" class="homed4 bg-green-600 p-2 rounded-xl border-2"><a href="#contact" class="hover:text--600  rounded-xl ">kontakt</a></li>
-                <li id="home4" class="homed4 bg-blue-600 p-2 rounded-xl border-2"><a href="https://www.linkedin.com/in/lamimsarker/" class="hover:text--600  rounded-xl " target="_blank">LinkedIn</a></li>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="#home">Lummim</a>
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="#home">Home</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#about">Om mig</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#service">Kompetencer</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#portfolio">Projekter</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#vision">Vision</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#blog">Blog</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#contact">Kontakt</a>
+                </li>
+                <li class="item ml-md-3">
+                    <a href="https://www.canva.com" target="_blank" class="btn btn-primary">Download CV</a>
+                </li>
             </ul>
-        </nav>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
+    </nav>
+    <!-- End of Page Navbar -->
+
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                <span class="up">HEJ!</span>
+                <span class="down">Jeg er Lummim Sarker</span>
+            </h1>
+            <p class="header-subtitle">
+                SOFTWAREUDVIKLER · PC · WEB · iOS · ANDROID<br>
+                Kandidatstuderende i datalogi og teknik ved DTU
+            </p>
+
+            <a href="#portfolio" class="btn btn-primary">Se mine projekter</a>
+        </div>
     </header>
-    <section id="about" class="md:flex lg:flex s:inline border rounded-l">
-        <div  class="s:w-full md:w-1/2 lg:w-1/2 p-8 text-center bg-gray-400 bg-opacity-80">
-            <h2 class="text-2xl font-semibold mb-4 text-blue-600 uppercase">Udviklerrolle</h2>
-                <p id="about-text1 "class="about-me-text upercase">Jeg er en passioneret software- og it-nørd.</p>
-                <p class="about-me-text2 text-blue-900">Softwareudvikler | Web IOS Android </p>
-                <p class="about-me-text3 text-green-900">Med design Sense og kreative redigeringer.</p>
-                <p class="about-me-text3 text-red-900">Jeg er indskrevet på mit første år på kandidatuddannelsen i datalogi og teknik på DTU.</p>
+    <!-- end of page header -->
 
-        </div>
-        <div class="md:w-1/5 s:w-full s:pb-8 lg:w-1/5  relative p-4 text-center bg-gray-300 bg-opacity-80 border-r-2 border-dotted border-yellow-600">
-            <h6 class=" text-xl font-semibold text-blue-600 uppercase mt-4">Stak</h2>
-            <div class="md:w-1/2 lg:w-1/2 ">
-                <img id="img1" src="images/1.png" width="100px" class="absolute" height="300px" alt=""> 
-                <img id="img2" src="images/2.png" width="100px"  height="300px" class="absolute" alt="">
-                <img id="img3" src="images/3.png" width="100px"  height="300px" class="sm:absolute m:absolute lg:absolute xl:absolute s:relative" alt="">
-                
+    <!-- about section -->
+    <section class="section pt-0" id="about">
+        <div class="container text-center">
+            <div class="about">
+                <div class="about-img-holder">
+                    <!-- Opdater sti til dit eget billede -->
+                    <img src="images/Melamim.png" class="about-img"
+                        alt="Portræt af Lummim Sarker, softwareingeniør og kandidatstuderende ved DTU.">
+                </div>
+                <div class="about-caption">
+                    <p class="section-subtitle">Hvem er jeg?</p>
+                    <h2 class="section-title mb-3">Om mig</h2>
+                    <p>
+                        Jeg er en passioneret software- og IT-nørd med fokus på at skabe brugervenlige digitale
+                        løsninger. Jeg læser på mit første år af kandidatuddannelsen i datalogi og teknik ved
+                        Danmarks Tekniske Universitet (DTU).
+                    </p>
+                    <p>
+                        Jeg arbejder med softwareudvikling på tværs af platforme – Web, iOS og Android – og kombinerer
+                        det med et stærkt design-sense og erfaring med kreative redigeringer. Gennem årene har jeg
+                        været involveret i en række projekter inden for både startup-verdenen og etablerede virksomheder.
+                    </p>
+                    <p>
+                        Som udvikler har jeg arbejdet med stakke som MERN, Laravel, Django, No/SQL, Java og PHP – og
+                        jeg trives bedst, når jeg kan bygge skalerbare løsninger, der skaber værdi for rigtige brugere.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1vwyrsfWccwt-7WdOTrSdUwlWoibgiAim/view?usp=sharing"
+                        target="_blank" class="btn-rounded btn btn-outline-primary mt-4">
+                        Download mit CV
+                    </a>
+                </div>
             </div>
-            <div class="ml-28 mt-4">
-                
-                <p class="text-sm text-blue-900">MERN Laravel Django No/SQL Java Php
-                </p>
-            </div>
-        </div>
-        <div  class="md:w-2/5 s:w-full lg:w-2/5 s:mt-8 p-8 text-center bg-gray-300 bg-opacity-80">
-            <h2 class="uppercase text-2xl font-semibold mb-4 text-yellow-600 ">Design og redigering</h2>
-            
-            <div class="md:w-1/2 lg:w-1/2">
-                <img id="img2" src="images/4.png" width="100px" class="absolute" height="300px" alt=""> 
-                <img id="img1" src="images/5.png" width="100px"  height="300px" class="absolute" alt="">
-                <img id="img3" src="images/6.png" width="100px"  height="300px" class="absolute" alt="">
-                
-            </div>
-            <div class="ml-28 mt-4 md:w-1/2 lg:w-1/2 ">
-              <p class="about-me-text2 text-blue-700">
-                Jeg startede med fotografering og videoredigering i 2011, senere arbejdede jeg på forskellige selvstændige og personlige projekter udover min softwareingeniøruddannelse.
-              </p>
-               
-            </div>
-        </div>
-        <div class="md:w-1/5 s:w-full s:pb-8 lg:w-1/5  p-8 text-center  bg-gray-400 bg-opacity-80">
-            <h6 class=" text-xl font-semibold  text-yellow-600  uppercase">værktøjer</h2>
-                <p class="about-me-text2 text-green-900">Da vinci resolve | Adove XD | Canva | Pictory | AI | Photo Scape | Adobe and many others
-                </p>
         </div>
     </section>
-    <section id="projects" class="p-8">
-        <h2 class="text-3xl underline font-bold mb-4 text-yellow-600  text-center">Projekter</h2>
-        <div class="container mx-auto py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="card bg-white shadow-md rounded-lg overflow-hidden "  >
-                    <img class="w-full h-48 object-cover p-2 cursor-pointer" width="200px" height="400px" src="images/paypol.png" alt="Paypoll" onclick="window.open('https://apkcombo.com/paypoll/com.mindscapeltd.paypoll/', '_blank')">
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-xl text-blue-500 mb-2  cursor-pointer"  onclick="window.open('https://apkcombo.com/paypoll/com.mindscapeltd.paypoll/', '_blank')">PayPoll - 2018-2019</h3>
-                        <p class="text-gray-500 font-semibold text-md">Paypoll Earn Real Money From Anywhere, Anytime.</p>
-                        <p class="text-gray-700 text-sm">Arbejdede i Backend-systemet i Laravel og Jquery med CSS og blade php</p>
-                        
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="card bg-white shadow-md rounded-lg overflow-hidden">
-                    <img class="w-full p-2 h-48 object-cover cursor-pointer" src="images/sofor.jpg" alt="Sofor Rides"  onclick="window.open('https://play.google.com/store/apps/details?id=com.sofor.user&hl=da', '_blank')">
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-xl text-blue-500 mb-2 cursor-pointer" onclick="window.open('https://play.google.com/store/apps/details?id=com.sofor.user&hl=da', '_blank')">Sofor Rides- Ride Sharing</h3>
-                        <p id="text" class="text-gray-500  text-md">Sofor er en ride-sharing app, der tilbyder en række transportmuligheder, herunder biler, 
-                            cykler, CNG, luksusbiler og ambulancer. Med dens brugervenlige grænseflade kan passagerer
-                             hurtigt og nemt anmode om en tur og spore deres chaufførs placering for øget sikkerhed. 
-                             Sofor sikrer også rimelige priser for alle forlystelser og anvender sikkerhedsforanstaltninger 
-                             for at beskytte både chauffører og passagerer. Uanset om du har brug for en hurtig tur til kontoret
-                              eller akut lægetransport, har Sofor dig dækket.<span class="font-semibold"> Mit eget produkt - Lummim</span></p>
-                              
-                              <button id="readMoreBtn2" class="mt-2 text-blue-500 hover:underline">Read more</button>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="card bg-white shadow-md rounded-lg overflow-hidden " >
-                    <img class="w-full p-2 h-48  object-cover cursor-pointer" height="100px" width="100px" src="images/mplogo.jpg" alt="Muktopaath" onclick="window.open('https://muktopaath.gov.bd/', '_blank')">
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-xl text-blue-500 mb-2 cursor-pointer" onclick="window.open('https://muktopaath.gov.bd/', '_blank')">Muktopaath- The largest Elearning platform</h3>
-                        <p id="text2" class="text-gray-700">Den største e-læringsplatform i Bangla. Muktopaath har 2,35 millioner brugere 298 løbende kurser 87 Partnere 50 Instruktør. Tilmeld dig vores platform og vælg kurser om dine foretrukne emner. Jeg var den eneste frontend-softwareingeniør til design og udvikling under min embedsperiode i Orange BD i 2023.</p>
-                        <button id="readMoreBtn" class="mt-2 text-blue-500 hover:underline">Read more</button>
-                    </div>
-                </div>
-                 <!-- Card Gymrevenue -->
-                 <div class="card bg-white shadow-md rounded-lg overflow-hidden " >
-                    <img class="w-full p-2 h-48 object-cover cursor-pointer" src="images/gym.png" alt="Gymrevenue" onclick="window.open('https://www.gymrevenue.com/', '_blank')">
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-xl text-blue-500 mb-2 cursor-pointer" onclick="window.open('https://www.gymrevenue.com/', '_blank')">Gymrevenue ERP USA</h3>
-                        <p id="text3" class="text-gray-700">GymRevenue er den nye cloud-baserede platform og applikation, der revolutionerer, hvordan Gym-ejere og -operatører reducerer omkostningerne, sparer tid og forstærker ressourcer, mens de vokser deres forretning. Endelig en alt-i-én-løsning, der FAKTISK er en alt-i-én-løsning.</p>
-                        <button id="readMoreBtn3" class="mt-2 text-blue-500 hover:underline">Read more</button>
-                        
-                    </div>
-                </div>
-                 <!-- Card 3 -->
-                 <div class="card bg-white shadow-md rounded-lg overflow-hidden" >
-                    <img class="w-full p-2 h-48 object-cover  cursor-pointer" src="images/paikarmama.png" alt="Card Image 3" onclick="window.open('https://play.google.com/store/apps/details?id=com.deshifarmer.retail', '_blank')">
-                    <hr>
-                    <div class="p-6 ">
-                        <h3  class="text-lg font-semibold mb-2 text-blue-500" onclick="window.open('https://play.google.com/store/apps/details?id=com.deshifarmer.retail', '_blank')"> Paikarimama - A retailer app.</h3>
-                        <p id="text4" class="text-gray-700">En innovativ mobilapp dedikeret til at revolutionere forsyningskæden for Deshi-bønder. Vi forstår essensen af ​​dine lokale produkter og sigter efter at bygge bro mellem landmænd, detailbutikker, restauranter og landbrugsvirksomheder og bringe friske landbrugsprodukter af høj kvalitet lige til døren.</p>
-                        <button id="readMoreBtn4" class="mt-2 text-blue-500 hover:underline">Read more</button>
-                    </div>
-                </div>
-                 <!-- Card 3 -->
-                 <div class="card bg-white shadow-md rounded-lg overflow-hidden cursor-pointer" >
-                    <img class="w-full p-2 h-48 object-cover  cursor-pointer" src="images/deshifarmers.png" alt="Card Image 3" onclick="window.open('https://www.deshifarmer.co/solutions', '_blank')">
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2 text-blue-500" onclick="window.open('https://www.deshifarmer.co/solutions', '_blank')">Desifarmers Solutions</h3>
-                        <p class="text-gray-700">A 'Seed to Market' agritech platform solution for the tangible products for both the farmers  </p>
+    <!-- end of about section -->
+
+    <!-- service / stack section -->
+    <section class="section" id="service">
+        <div class="container text-center">
+            <p class="section-subtitle">Hvad kan jeg?</p>
+            <h6 class="section-title mb-6">Kompetencer & Stack</h6>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/analytics.svg" alt="Softwareudvikling ikon" class="icon">
+                            <h6 class="title">Fullstack udvikling</h6>
+                            <p class="subtitle">
+                                Erfaring med MERN, Laravel og Django – fra REST API’er og backend-logik til moderne,
+                                responsive frontend-løsninger i JavaScript og React.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/responsive.svg" alt="Mobiludvikling ikon" class="icon">
+                            <h6 class="title">Web · iOS · Android</h6>
+                            <p class="subtitle">
+                                Udvikling af mobile og webbaserede apps, fra MVP til produktion – med fokus på
+                                performance, skalerbarhed og god brugeroplevelse.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/pencil-case.svg" alt="Design og redigering ikon" class="icon">
+                            <h6 class="title">Design & redigering</h6>
+                            <p class="subtitle">
+                                Erfaring siden 2011 med foto, video og grafisk design. Arbejder bl.a. i DaVinci Resolve,
+                                Adobe XD, Canva, Pictory og andre kreative værktøjer.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/toolbox.svg" alt="Entreprenørskab ikon" class="icon">
+                            <h6 class="title">Startup & vision</h6>
+                            <p class="subtitle">
+                                Co-founder af flere projekter som Deshifarmer og Webro Technology – hvor tech,
+                                forretning og impact går hånd i hånd.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="mt-5">
+                <strong>Stack:</strong> MERN · Laravel · Django · No/SQL · Java · PHP
+            </p>
+        </div>
+    </section>
+    <!-- end of service section -->
+
+    <!-- portfolio / projects section -->
+    <section class="section" id="portfolio">
+        <div class="container text-center">
+            <p class="section-subtitle">Hvad har jeg lavet?</p>
+            <h6 class="section-title mb-6">Udvalgte projekter</h6>
+
+            <div class="row">
+                <!-- PayPoll -->
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img src="images\paypol.png" class="portfolio-card-img"
+                            alt="PayPoll – Earn Real Money From Anywhere, Anytime.">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>PayPoll</h4>
+                                <p class="font-weight-normal">Laravel · jQuery · Blade · CSS</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Sofor Rides -->
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img src="images\sofor.jpg" class="portfolio-card-img"
+                            alt="Sofor Rides – Ride sharing platform.">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>Sofor Rides</h4>
+                                <p class="font-weight-normal">Ride-sharing app · Mit eget produkt</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Muktopaath -->
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img src="images\mplogo.jpg" class="portfolio-card-img"
+                            alt="Muktopaath – Den største e-læringsplatform på Bangla.">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>Muktopaath</h4>
+                                <p class="font-weight-normal">Frontend softwareingeniør · Orange BD · 2023</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <!-- GymRevenue -->
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img src="images\gym.png" class="portfolio-card-img"
+                            alt="GymRevenue ERP USA – Cloud-baseret platform til fitnessbranchen.">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>GymRevenue ERP</h4>
+                                <p class="font-weight-normal">Cloud ERP · USA · Alt-i-en løsning</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Paikarimama -->
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img src="images\paikarmama.png" class="portfolio-card-img"
+                            alt="Paikarimama – Retailer app for lokale landbrugsprodukter.">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>Paikarimama</h4>
+                                <p class="font-weight-normal">Retail-app · Forsyningskæde for Deshi-bønder</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Desifarmers -->
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img src="images\deshifarmers.png" class="portfolio-card-img"
+                            alt="Desifarmers Solutions – Seed to Market agritech platform.">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>Desifarmers Solutions</h4>
+                                <p class="font-weight-normal">Agritech · “Seed to Market” platform</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <a href="https://play.google.com" target="_blank" class="btn btn-outline-primary btn-rounded">
+                    Se alle mine apps i Google Play Butik
+                </a>
             </div>
         </div>
-        <h2 class="text-3xl underline font-bold mb-4 text-yellow-400  text-center"><a href="https://play.google.com/store/apps/dev?id=8530487840231695304&hl=da" target="_blank"> <i class="fa fa-hand-pointer" area-hidden="true"> </i> Klik her for at se alle mine projekter i Google Play Butik</a></h2>
-        <div class="px-12 ">
-            <a class=" text-yellow-600 font-semibold ">Webry.tech er en vision for mig - hvor vi - bro - tech er grundlagt i 2012, da vi startede vores bacheloruniversitet, stadig nu, hvis vi laver et projekt, offentliggør vi det her. Webry.tech er grundlagt af stort set to af os, en anden fyr har et marketingstudium, og han tog det samme bacheloruniversitet i Business Administration.</a>
+    </section>
+    <!-- end of portfolio section -->
+
+    <!-- call-to-action section -->
+    <section class="section-sm bg-primary">
+        <div class="container text-center text-sm-left">
+            <div class="row align-items-center">
+                <div class="col-sm offset-md-1 mb-4 mb-md-0">
+                    <h6 class="title text-light">Vil du arbejde sammen med mig?</h6>
+                    <p class="m-0 text-light">Jeg er åben for samarbejde, freelance-opgaver og spændende projekter.</p>
+                </div>
+                <div class="col-sm offset-sm-2 offset-md-3">
+                    <a href="#contact" class="btn btn-lg my-font btn-light rounded">Kontakt mig</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- vision / entrepreneurship section -->
+    <section class="section" id="vision">
+        <div class="container text-center">
+            <p class="section-subtitle">Baggrund & vision</p>
+            <h6 class="section-title mb-6">Visionary</h6>
+            <div>
+                <img src="images\visionary.png" alt="Entreprenørskab ikon" class="mb-4" width="80">
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <p>
+                        Mine to venner og jeg startede som studenteriværksættere i Bangladesh og begyndte på en
+                        iværksætterrejse sideløbende med vores bachelorstudier. Jeg tog rollen som IT-specialist og
+                        håndterede alt fra softwareudvikling til digital markedsføring.
+                    </p>
+                    <p>
+                        Vores første venture var <strong>Deshal</strong>, en Facebook-markedsbutik, der solgte økologisk
+                        mælk direkte fra gårde til dørtrin. Succesen med Deshal førte til <strong>Druuto</strong>, en
+                        leveringstjeneste, hvor vi sikrede inkubationsmidler og seed funding.
+                    </p>
+                    <p>
+                        I 2018 grundlagde vi <strong>Deshifarmer</strong>, en innovativ virksomhed, der med tiden voksede
+                        til en af de største agritech-virksomheder i Bangladesh. Senere var jeg også med til at stifte
+                        <strong>Webro Technology</strong> sammen med en marketingekspert – et sted hvor vi forener tech,
+                        kreativitet og forretning.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of vision section -->
+
+    <!-- blog section -->
+    <section class="section" id="blog">
+        <div class="container text-center">
+            <p class="section-subtitle">Seneste indlæg</p>
+            <h6 class="section-title mb-6">Blog & Medium</h6>
+
+            <!-- blog-wrapper -->
+            <div class="blog-card">
+                <div class="blog-card-header">
+                    <img src="assets/imgs/img-1.jpg" class="blog-card-img"
+                        alt="Medium blogindlæg om software, design og entreprenørskab.">
+                </div>
+                <div class="blog-card-body">
+                    <h5 class="blog-card-title">Refleksioner som udvikler & iværksætter</h5>
+
+                    <p class="blog-card-caption">
+                        <a href="https://medium.com" target="_blank">På Medium</a>
+                        <a href="#"><i class="ti-heart text-danger"></i> Inspirerende indhold</a>
+                        <a href="#"><i class="ti-comment"></i> Erfaringer & learnings</a>
+                    </p>
+                    <p>
+                        Jeg skriver om min rejse som softwareingeniør, kandidatstuderende og iværksætter – fra de
+                        tekniske detaljer i projekter til de mere menneskelige sider af at bygge produkter og teams.
+                    </p>
+                    <a href="https://medium.com" target="_blank" class="blog-card-link">
+                        Se min Medium-profil <i class="ti-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- blog-wrapper -->
+            <div class="blog-card">
+                <div class="blog-card-header">
+                    <img src="assets/imgs/img-2.jpg" class="blog-card-img"
+                        alt="YouTube-kanal for design, redigering og kreative projekter.">
+                </div>
+                <div class="blog-card-body">
+                    <h5 class="blog-card-title">Design & redigering i praksis</h5>
+
+                    <p class="blog-card-caption">
+                        <a href="https://www.youtube.com/@lamimsarker" target="_blank">YouTube-kanal</a>
+                        <a href="#"><i class="ti-heart text-danger"></i> Foto & video</a>
+                        <a href="#"><i class="ti-comment"></i> Kreative projekter</a>
+                    </p>
+
+                    <p>
+                        Siden 2011 har jeg arbejdet med foto, video og grafisk design. På YouTube deler jeg ud af
+                        processer, eksperimenter og resultater – både som selvstændige projekter og som en del af
+                        softwareudviklingen.
+                    </p>
+
+                    <a href="https://www.youtube.com/@lamimsarker" target="_blank" class="blog-card-link">
+                        Besøg min YouTube-kanal <i class="ti-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
 
         </div>
     </section>
-    <section id="editing" class="p-8">
-        <h2 class="text-3xl underline font-bold mb-4 text-yellow-600  text-center">Design/Redigering</h2>
-        <div class="p-2 text-center mb-8  rounded-l ">
-            <a href="https://www.youtube.com/@lamimsarker" target="_blank" class=" bg-white px-2 text-green-600 font-bold text-3xl justify-center m-auto underline"><i class="fa fa-video fa-spin" area-hidden="true"></i> YouTube Channel: https://www.youtube.com/@lamimsarker</a>
+    <!-- end of blog section -->
 
-        </div>
-        <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 2000px; height: 600px; overflow: hidden;">
+    <!-- contact section -->
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <p class="section-subtitle">Hvordan kan du kontakte mig?</p>
+            <h6 class="section-title mb-5">Kontakt mig</h6>
 
-            <!-- Loading Screen -->
-            <div u="loading" style="position: absolute; top: 0px; left: 0px;">
-                <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
-                    background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
+            <p class="mb-4">
+                Du er velkommen til at række ud, hvis du vil samarbejde, har spørgsmål eller bare vil connecte.<br>
+                <strong>Lokation:</strong> Herlev 2860, Greater København, Danmark<br>
+                <strong>Telefon:</strong> +45 71 60 75 73<br>
+                <strong>Email:</strong> <a href="mailto:lamimsarker@gmail.com">lamimsarker@gmail.com</a>
+            </p>
+
+            <!-- contact form -->
+            <!-- mailto: åbner brugerens mailklient og sender til lamimsarker@gmail.com -->
+            <form action="mailto:lamimsarker@gmail.com" method="POST" enctype="text/plain"
+                class="contact-form col-md-10 col-lg-8 m-auto">
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" name="Navn" size="50" class="form-control" placeholder="Dit navn" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="email" name="Email" class="form-control" placeholder="Din email" required>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <textarea name="Besked" id="comment" rows="6" class="form-control"
+                            placeholder="Skriv din besked her"></textarea>
+                    </div>
+                    <div class="form-group col-sm-12 mt-3">
+                        <input type="submit" value="Send besked" class="btn btn-outline-primary rounded">
+                    </div>
                 </div>
-                <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
-                    top: 0px; left: 0px;width: 100%;height:100%;">
-                </div>
-            </div>
-    
-            <!-- Slides Container -->
-            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 2000px; height: 600px; overflow: hidden;">
-                <div class="inline"><img u="image" src="./images/90screw.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Product img</h3></div>
-                <div><img u="image" src="./images/90screwlogo.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Logo design</h3></div>
-                <div><img u="image" src="./images/90screwmodel.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Model img</h3></div>
-                <div><img u="image" src="./images/deshifarmers.png" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Brand design</h3></div>
-                <div><img u="image" src="./images/ramadan.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Calender design</h3></div>
-                <div><img u="image" src="./images/soforridelogo.jpg" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Logo Design</h3></div>
-                <div><img u="image" src="./images/laptop.png" /> <h3 class="bg-white text-xl text-black text-center bottom-0">Mockup design</h3></div>
-                <div><img u="image" src="./images/go.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Abstract design</h3></div>
-                <div><img u="image" src="./images/branding.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Brand design</h3></div>
-                <div><img u="image" src="./images/content.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Content design for social media</h3></div>
-                <div><img u="image" src="./images/banner.png" /><h3 class="bg-white text-xl text-black text-center bottom-0">Social Banner design</h3></div>
-                <div><img u="image" src="./images/flood.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Awareness post design</h3></div>
-                <div><img u="image" src="./images/food.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Foodography</h3></div>
-                <div><img u="image" src="./images/event design.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Event poster design</h3></div>
-                <div><img u="image" src="./images/facebook post desing.jpg" /><h3 class="bg-white text-xl text-black text-center bottom-0">Facebook post design</h3></div>
-                <div><img u="image" src="./images/banner.png" /><h3 class="bg-white text-xl text-black text-center bottom-0">Banner post design</h3></div>
-                <div><iframe width="600" height="600" src="https://www.youtube.com/embed/e3SpEPG2pxw?si=HloSZ7wgBW4lkIIn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><h3 class="bg-white text-xl text-black text-center bottom-0">Food blogging video</h3></div>
-                <div><iframe width="600" height="600" src="https://www.youtube.com/embed/mPGJjJrf7VM?si=aVdT_IvX6G3_ps2D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-            
-            </div>
-            
-            <!-- Bullet Navigator Skin Begin -->
-            <style>
-                /* jssor slider bullet navigator skin 03 css */
-                /*
-                .jssorb03 div           (normal);
-                .jssorb03 div:hover     (normal mouseover);
-                .jssorb03 .av           (active);
-                .jssorb03 .av:hover     (active mouseover);
-                .jssorb03 .dn           (mousedown);
-                */
-                .jssorb03 div, .jssorb03 div:hover, .jssorb03 .av
-                {
-                    background: url(../img/b03.png) no-repeat;
-                    overflow:hidden;
-                    cursor: pointer;
-                }
-                .jssorb03 div { background-position: -5px -4px; }
-                .jssorb03 div:hover, .jssorb03 .av:hover { background-position: -35px -4px; }
-                .jssorb03 .av { background-position: -65px -4px; }
-                .jssorb03 .dn, .jssorb03 .dn:hover { background-position: -95px -4px; }
-            </style>
-            <!-- bullet navigator container -->
-            <div u="navigator" class="jssorb03 bg-black" style="position: absolute; bottom: 4px; right: 6px;">
-                <!-- bullet navigator item prototype -->
-                <div u="prototype" style="position: absolute; width: 21px; height: 21px; text-align:center; line-height:21px; color:white; font-size:12px;"><NumberTemplate></NumberTemplate></div>
-            </div>
-            <!-- Bullet Navigator Skin End -->
-            
-            <!-- Arrow Navigator Skin Begin -->
-            <style>
-                /* jssor slider arrow navigator skin 03 css */
-                /*
-                .jssora03l              (normal);
-                .jssora03r              (normal);
-                .jssora03l:hover        (normal mouseover);
-                .jssora03r:hover        (normal mouseover);
-                .jssora03ldn            (mousedown);
-                .jssora03rdn            (mousedown);
-                */
-                .jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
-                {
-                    position: absolute;
-                    cursor: pointer;
-                    display: block;
-                    background: url(../img/a03.png) no-repeat;
-                    overflow:hidden;
-                }
-                .jssora03l { background-position: -3px -33px; }
-                .jssora03r { background-position: -63px -33px; }
-                .jssora03l:hover { background-position: -123px -33px; }
-                .jssora03r:hover { background-position: -183px -33px; }
-                .jssora03ldn { background-position: -243px -33px; }
-                .jssora03rdn { background-position: -303px -33px; }
-            </style>
-            <!-- Arrow Left -->
-            <span u="arrowleft" class="jssora03l" style="width: 55px; height: 55px; top: 123px; left: 8px;">
-            </span>
-            <!-- Arrow Right -->
-            <span u="arrowright" class="jssora03r" style="width: 55px; height: 55px; top: 123px; right: 8px">
-            </span>
-            <!-- Arrow Navigator Skin End -->
-            <a style="display: none" href="http://www.jssor.com">Lummim</a>
+            </form>
         </div>
-        
     </section>
-    <section id="contact" class="p-8">
-        <h2 class="text-3xl underline font-bold pb-4 text-yellow-600  text-center">Visionery</h2>
-        <div class="flex">
-            <div class="w-1/2 px-2">
-                <p>Mine to venner og jeg startede som studenteriværksættere i Bangladesh og begyndte på en iværksætterrejse sideløbende med vores bachelorstudier. I vores team påtog jeg mig rollen som IT-specialisten, der varetog alt fra softwareudvikling til digital markedsføring. Jeg troede på at dykke lige ind i stedet for at vente på det perfekte øjeblik.
+    <!-- end of contact section -->
 
-                    Vores første satsning var Deshal, en Facebook-markedsbutik, der sælger økologisk mælk direkte fra gårde til dørtrin. Deshals succes inspirerede os til at udvide til leveringstjenester med Druuto. Vi sikrede inkubationsmidler, søgte startfinansiering og lancerede til sidst Druuto med flere leverandører. Vores markedsundersøgelser havde dog nogle mangler, som vi lærte af.
-                    
-                    I 2018 grundlagde vi Deshifarmer, en innovativ virksomhed, der med tiden ville forvandle sig til den største agritech-virksomhed i Bangladesh, takket være på hinanden følgende investeringer i 2018 og 2022.
-                    
-                    På grund af min baggrund inden for IT og en forkærlighed for selvstændigt arbejde, var jeg også med til at stifte Webro Technology sammen med en marketingekspert, og udnyttede vores komplementære kompetencer til at bygge endnu et succesfuldt foretagende. </p>
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">
+            <p class="mb-0">
+                Alle rettigheder reserverede &copy;
+                <script>document.write(new Date().getFullYear())</script>
+                | Lummim Sarker | Cell: +45 71 60 75 73 |
+                <a href="mailto:lamimsarker@gmail.com">lamimsarker@gmail.com</a> | Herlev 2860, Greater København,
+                Danmark
+            </p>
+            <div class="social-links text-right m-auto ml-sm-auto">
+                <a href="https://www.linkedin.com/in/lamimsarker" target="_blank" class="link"><i
+                        class="ti-linkedin"></i></a>
+                <a href="https://www.youtube.com/@lamimsarker" target="_blank" class="link"><i
+                        class="ti-youtube"></i></a>
+                <a href="https://play.google.com" target="_blank" class="link"><i class="ti-android"></i></a>
+                <a href="https://medium.com/@lamimsarker" target="_blank" class="link"><i class="ti-write"></i></a>
             </div>
-            <div class="w-1/2 px-2">
-                <p>Starting as student entrepreneurs in Bangladesh, my two friends and I embarked on an entrepreneurial journey alongside our bachelor's studies. In our team, I took on the role of the IT specialist, handling everything from software development to digital marketing. I believed in diving right in, rather than waiting for the perfect moment.
-
-                    Our first venture was Deshal, a Facebook marketplace store selling organic milk directly from farms to doorsteps. The success of Deshal inspired us to expand into delivery services with Druuto. We secured incubation funds, pursued seed funding, and eventually launched Druuto with several vendors. However, our market research had some shortcomings that we learned from.
-                    
-                    In 2018, we founded Deshifarmer, an innovative business that would eventually transform into the largest agritech company in Bangladesh, thanks to consecutive investments in 2018 and 2022.
-                    
-                    Given my background in IT and a penchant for independent work, I also co-founded Webro Technology with a marketing expert, leveraging our complementary skills to build another successful venture. </p>
-            </div>
-
-            
-            
-        </div>
-        <h2 class="text-3xl  font-bold pb-4 text-blue-500  text-center">Jeh Tak :)</h2>
-        <img src="images/logo.png" class=" m-auto">
-    
-
-        <button id="upBtn" class="fixed bottom-4 w-12 right-4 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700">
-            Top
-          </button>
-    </section>
-    
-
-    <video autoplay muted loop class="video-bg relative bottom-0 right-0">
-        <source src="images/lamim.mp4" type="video/mp4">
-        71607573
-      </video>
-      <div class="video-bg text-center">
-        <p class="text-green-600 p-2">Alle rettigheder reserverede © 2024 | Lummim Sarker |🖥️ | Cell: +45 71607573 | lamimsarker@gmail.com | Herlev 2860, Greater København, Denmark</p>
-        <a class="text-2xl underline" href="https://www.canva.com/design/DAGGbaCMdAc/HSo5a9LLaxg34ciABx2cNw/view?utm_content=DAGGbaCMdAc&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank"> 
-            <i class="fa  fa-spin" aria-hidden="true">~ </i> klik her for at se og downloade CV <i class="fa  fa-spin" aria-hidden="true">~</i></a>
-           <br>
-           
-            <a href="https://medium.com/@lamimsarker" target="_blank"> <i class="fa  fa-spin" aria-hidden="true">~ </i> klik her for at se Medium Profil <i class="fa  fa-spin" aria-hidden="true">~</i></a>
+        </footer>
     </div>
-    <script>
-        // GSAP animations
-        gsap.from("header", { duration: 2, y: -100, opacity: 0, ease: "bounce" });
-        gsap.from("section", { duration: 2, opacity: 0, stagger: 0.3 });
-      /*   gsap.to("#animated-text", {
-            duration: 2,
-            text: "Lummim Sarker",
-            ease: "power4.out",
-            repeat: -1,
-            yoyo: true,
-            delay:1
-        }); */
+    <!-- end of page footer -->
 
-        const box = document.getElementById('home');
-        const box2 = document.getElementById('home2');
-        const box3 = document.getElementById('home3');
-        const box4 = document.getElementById('home4');
-        box.addEventListener('mouseenter', () => {
-            gsap.to('.homed', {
-                duration: 0.3,
-                scale: 1.1
-            });
-        });
-        box.addEventListener('mouseleave', () => {
-            gsap.to('.homed', {
-                duration: 0.3,
-                scale: 1
-            });
-        });
-        box2.addEventListener('mouseenter', () => {
-            gsap.to('.homed2', {
-                duration: 0.3,
-                scale: 1.1
-            });
-        });
-        box2.addEventListener('mouseleave', () => {
-            gsap.to('.homed2', {
-                duration: 0.3,
-                scale: 1
-            });
-        });
-        box3.addEventListener('mouseenter', () => {
-            gsap.to('.homed3', {
-                duration: 0.3,
-                scale: 1.1
-            });
-        });
-        box3.addEventListener('mouseleave', () => {
-            gsap.to('.homed3', {
-                duration: 0.3,
-                scale: 1
-            });
-        });
-        box4.addEventListener('mouseenter', () => {
-            gsap.to('.homed4', {
-                duration: 0.3,
-                scale: 1.1
-            });
-        });
-        box4.addEventListener('mouseleave', () => {
-            gsap.to('.homed4', {
-                duration: 0.3,
-                scale: 1
-            });
-        });
-        
-        gsap.from(".about-me-text", {
-            opacity: 0,
-            x: -220,
-            duration: 1,
-            stagger: 0.5,
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- GSAP animations -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero / navbar intro
+        const heroTl = gsap.timeline({ defaults: { duration: 1, ease: "power3.out" } });
+
+        heroTl
+            .from(".custom-navbar", { y: -60, opacity: 0 })
+            .from(".header-title .up", { y: 40, opacity: 0 }, "-=0.5")
+            .from(".header-title .down", { y: 40, opacity: 0 }, "-=0.4")
+            .from(".header-subtitle", { y: 20, opacity: 0 }, "-=0.4")
+            .from(".header .btn", { scale: 0.8, opacity: 0, ease: "back.out(1.7)" }, "-=0.3");
+
+        // About section
+        gsap.from("#about .about-img", {
             scrollTrigger: {
                 trigger: "#about",
-                start: "top 80%",
-                end: "bottom 80%",
-                scrub: true,
-            }
-        });
-        gsap.from("#about-text1", {
+                start: "top 80%"
+            },
+            x: -60,
             opacity: 0,
-            x: -300,
-            duration: 1.5,
-            stagger: 0.05,
-            ease: "power2.out",
+            duration: 1,
+            ease: "power3.out"
         });
-        gsap.from(".about-me-text2", {
+
+        gsap.from("#about .about-caption", {
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 80%"
+            },
+            x: 60,
             opacity: 0,
-            x: -300,
-            duration: 1.5,
-            stagger: 0.05,
-            ease: "power2.out",
-            delay: 1
+            duration: 1,
+            ease: "power3.out"
         });
-        gsap.from(['.about-me-text4','#portf'], {
+
+        // Service cards
+        gsap.from("#service .service-card", {
+            scrollTrigger: {
+                trigger: "#service",
+                start: "top 80%"
+            },
+            y: 40,
             opacity: 0,
-            y: 300,
-            boxShadow: "0px 0px 20px 20px red",
-            duration:1.5,
-            stagger: 0.05,
-            ease: "power2.out",
-            delay: 2 // Delay the animation by 3 seconds
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power2.out"
         });
-        gsap.to('#animated-text',  {text: " Mohammad Lummim Sarker",opacity:1, duration: 1, delay: 4, ease: "none"});
-      
-        gsap.from('.about-me-text3', {
+
+        // Portfolio cards
+        gsap.from("#portfolio .portfolio-card", {
+            scrollTrigger: {
+                trigger: "#portfolio",
+                start: "top 80%"
+            },
+            y: 40,
             opacity: 0,
-            x: -300,
-            duration:1.5,
-            stagger: 0.05,
-            ease: "power2.out",
-            delay: 2 // Delay the animation by 3 seconds
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out"
         });
-        gsap.from('#img1',{
-            opacity:0,
-            x:300,
-            duration:1.5,
-            stagger:0.5,
-            ease:"power2.out",
-            delay:1
+
+        // Vision text
+        gsap.from("#vision .col-md-10 p", {
+            scrollTrigger: {
+                trigger: "#vision",
+                start: "top 80%"
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1
         });
-        gsap.from('#img2',{
-            opacity:0,
-            x:-300,
-            duration:1.5,
-            stagger:0.5,
-            ease:"power2.out",
-            delay:2
+
+        // Blog cards
+        gsap.from("#blog .blog-card", {
+            scrollTrigger: {
+                trigger: "#blog",
+                start: "top 80%"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power2.out"
         });
-        gsap.from('#img3',{
-            opacity:0,
-            x:-300,
-            duration:1.5,
-            stagger:0.5,
-            ease:"power2.out",
-            delay:3
+
+        // Contact form
+        gsap.from("#contact .contact-form", {
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 80%"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 0.9,
+            ease: "power2.out"
         });
-        gsap.from('.card',{
-            opacity:0,
-            x:-300,
-            duration:1.5,
-            stagger:0.5,
-            ease:"power2.out",
-            delay:1
-        });
-     
     </script>
+
+    <!-- Meyawo js -->
+    <script src="assets/js/meyawo.js"></script>
+
 </body>
+
 </html>
